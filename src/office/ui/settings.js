@@ -36,7 +36,7 @@ function setLang(l) {
   toast(tr('settings.switchingLang'));
   // the online demo is one static folder per language: English at the site's root, the others under /<lang>/
   // eslint-disable-next-line @next/next/no-location-assign-relative-destination -- each language is its own static export, not a route of this app
-  if (STATIC) { location.assign(`${process.env.NEXT_PUBLIC_SITE_ROOT || ''}/${l === DEFAULT_LANG ? '' : `${l}/`}${location.search}`); return; }
+  if (STATIC) { location.assign(`${process.env.NEXT_PUBLIC_SITE_ROOT || ''}/${l === (process.env.NEXT_PUBLIC_ROOT_LANG || DEFAULT_LANG) ? '' : `${l}/`}${location.search}`); return; }
   const u = new URL(location.href); u.searchParams.delete('lang');
   const viaUrl = () => { u.searchParams.set('lang', l); location.replace(u); };
   fetch(`/api/prefs${TOKEN ? `?k=${encodeURIComponent(TOKEN)}` : ''}`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ lang: l }) })

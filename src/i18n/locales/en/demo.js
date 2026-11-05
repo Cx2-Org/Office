@@ -56,4 +56,11 @@ export default {
   },
   // the scripted incident: three failing commands in a row
   incident: 'payment tests failed',
+  // runner mode: the CI bot team's live feed (src/office/runner)
+  runner: {
+    chip: '{machines} machines running · {waiting} waiting',
+    counts: 'Ready {ready} · blocked {blocked} · waiting {waiting}',
+    stuck: 'Stuck on {job}, needs a look',
+    machines: '{n} machines running',
+  },
 };

@@ -28,7 +28,7 @@ function placeLive(id) {
   switch (id) {
     case 'library': { const n = doing(READ_T); return n ? tr('places.live.reading', { n }) : ''; }
     case 'window': { const n = doing(WEB_T); return n ? tr('places.live.searching', { n }) : ''; }
-    case 'server': { const s = macSnap; return s?.mem ? `RAM ${Math.round((s.mem.used / s.mem.total) * 100)}%` : ''; }
+    case 'server': { const s = macSnap; if (s?.runner) return tr('demo.runner.machines', { n: s.machines }); return s?.mem ? `RAM ${Math.round((s.mem.used / s.mem.total) * 100)}%` : ''; }
     case 'deploy': return state.stats.deploy ? tr('places.live.deployToday', { n: state.stats.deploy }) : '';
     case 'board': { const n = list.filter((s) => s.lastPrompt && s.status !== 'rest').length + state.todos.filter((t) => !t.done).length; return n ? tr('places.live.tasks', { n }) : ''; }
     case 'coffee': { const n = list.filter((s) => s.status === 'rest').length; return n ? tr('places.live.resting', { n }) : ''; }

@@ -1,6 +1,6 @@
 name: Online demo
 
-# Publishes the demo office (a static site, no server) to GitHub Pages on every push to main.
+# Publishes the office (a static site, no server: runner mode reads the CI bots' public status feed live) to GitHub Pages on every push to main.
 # One-time setup: Settings → Pages → Build and deployment → Source: GitHub Actions.
 
 on:
@@ -35,6 +35,7 @@ jobs:
         run: |
           if [[ "$REPO" == *.github.io ]]; then export OFFICE_BASE_PATH=""; else export OFFICE_BASE_PATH="/$REPO"; fi
           export OFFICE_SITE_URL="https://${OWNER,,}.github.io"   # (absolute share links and canonical URLs)
+          export OFFICE_ROOT_LANG=vi   # runner mode (the CI bots' live feed) is the default page, in Vietnamese; ?demo plays the fictional demo
           node scripts/build-demo.mjs
         env:
           REPO: ${{ github.event.repository.name }}

@@ -21,6 +21,9 @@ import { logLine } from './demo-log.js';
 import { t as tr } from '../../i18n/index.js';
 
 export let DEMO;
+// the online site plays the CI bot team's live feed unless ?demo asks for the fictional one (runner/runner.js); still no
+// server, so everything DEMO keeps local stays local
+export const RUNNER = STATIC && !new URLSearchParams(location.search).has('demo');
 // The fictional projects. Paths, search terms and commands are the same in every language; what people write (prompts,
 // a command's description, what needs approval) comes from the demo dictionary, read when the demo starts.
 function demoProjects() {

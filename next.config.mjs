@@ -25,6 +25,8 @@ const nextConfig = {
     NEXT_PUBLIC_BASE_PATH: STATIC ? process.env.OFFICE_BASE_PATH || '' : '',
     // the demo site's root, where English lives; other languages are folders under it
     NEXT_PUBLIC_SITE_ROOT: STATIC ? process.env.OFFICE_SITE_ROOT || '' : '',
+    // the language at that root (scripts/build-demo.mjs, OFFICE_ROOT_LANG)
+    NEXT_PUBLIC_ROOT_LANG: STATIC ? process.env.OFFICE_ROOT_LANG || 'en' : '',
   },
 };
 

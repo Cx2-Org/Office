@@ -9,7 +9,8 @@ import { openSession } from '../ui/session-drawer.js';
 import { renderBell } from '../ui/topbar.js';
 import { closePlace } from '../interact/place-cards.js';
 import { TOKEN } from '../net/live.js';
-import { DEMO, connect, startDemo } from '../demo/demo.js';
+import { DEMO, RUNNER, connect, startDemo } from '../demo/demo.js';
+import { startRunner } from '../runner/runner.js';
 import { dayKey, rangeOf, renderReplay, seekTo, startReplay } from './replay.js';
 import { t as tr } from '../../i18n/index.js';
 
@@ -188,6 +189,6 @@ export function setup() {
   setTimeout(refreshWaitToday, 4000);
    setInterval(refreshWaitToday, 120000);
   $('rp-rec').addEventListener('click', () => (recorder ? stopRecording() : startRecording()));
-  if (DEMO) startDemo(); else connect();
+  if (RUNNER) startRunner(); else if (DEMO) startDemo(); else connect();
   renderBell();
 }

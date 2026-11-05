@@ -47,4 +47,11 @@ export default {
     schedule: 'ok, giờ lên lịch job đi',
   },
   incident: 'test thanh toán thất bại',
+  // runner mode: the CI bot team's live feed (src/office/runner)
+  runner: {
+    chip: '{machines} máy đang chạy · {waiting} việc chờ',
+    counts: 'Sẵn sàng {ready} · bị chặn {blocked} · đang chờ {waiting}',
+    stuck: 'Kẹt ở {job}, cần người xem',
+    machines: '{n} máy đang chạy',
+  },
 };

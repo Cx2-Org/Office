@@ -7,7 +7,8 @@ import { queueUi, toast } from './activity.js';
 import { closeSession, drM } from './session-drawer.js';
 import { chatMoved } from './group-chat.js';
 import { TOKEN } from '../net/live.js';
-import { DEMO, demoMac } from '../demo/demo.js';
+import { DEMO, RUNNER, demoMac } from '../demo/demo.js';
+import { runnerSnap } from '../runner/runner.js';
 import { icon } from './icons.js';
 import { strandedSection, strandedHolding } from './stranded.js';
 import { t as tr, num, locale } from '../../i18n/index.js';
@@ -16,7 +17,7 @@ export let macSnap = null;
 let confirmKey = null;
 let confirmTimer = null;
 const busyKeys = new Set();
-export function openMac() { if (state.selectedId) closeSession(); drM.hidden = false; if (small.matches) $('feed').classList.remove('feed--open'); loadMac(); clearInterval(state.macTimer); state.macTimer = setInterval(pollMac, 5000); }
+export function openMac() { if (RUNNER) return; if (state.selectedId) closeSession(); drM.hidden = false; if (small.matches) $('feed').classList.remove('feed--open'); loadMac(); clearInterval(state.macTimer); state.macTimer = setInterval(pollMac, 5000); }
 export function closeMac() { drM.hidden = true; clearInterval(state.macTimer); state.macTimer = setInterval(pollMac, 30000); }
 // the readings by the clock: not while the tab is hidden (each one has the server list every process; a tab hidden for
 // the evening would keep it at it all night); it reads again as soon as the tab shows
@@ -25,6 +26,7 @@ export const pollMac = () => { if (document.visibilityState === 'visible') loadM
 // button that no longer exists (the next reading draws it)
 let pressing = false;
 export async function loadMac() {
+  if (RUNNER) { macSnap = runnerSnap(); if (state.world) syncDevBoxes(macSnap); return; }   // (the CI machines, no Mac)
   if (DEMO) { macSnap = demoMac(); renderMacButton(); if (state.world) syncDevBoxes(macSnap); if (!drM.hidden && !pressing && !strandedHolding()) renderMac(); return; }
   try {
     const q = new URLSearchParams(TOKEN ? { k: TOKEN } : {}); if (!drM.hidden) q.set('open', '1');   // (open: fresh memory footprints)
@@ -331,7 +333,7 @@ export function renderLimits() {
   box.classList.toggle('is-empty', none);
   { // the pill shows the tightest limit (5 hours, the week, a model's week), coloured by how close it is
     const pill = $('btn-plan'), top = tightest(ws);
-    pill.hidden = false;
+    pill.hidden = RUNNER;   // (runner mode: no Claude plan to read)
     // other accounts: their tightest limit after the main one ("5 h 29% · org2 12%")
     const more = others.map((o) => { const t = tightest(liveOf(o)); return t ? ` · ${o.label || o.name} ${Math.round(t.pct)}%` : ''; }).join('');
     $('plan-mini').textContent = (top ? `${top.key === 'session' ? tr('mac.plan.fiveHour') : top.label} ${Math.round(top.pct)}%` : state.limitsNote ? tr('mac.plan.unread') : tr('mac.plan.reading')) + more;
