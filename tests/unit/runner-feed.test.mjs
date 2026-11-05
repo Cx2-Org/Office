@@ -52,3 +52,11 @@ test('running machines become boxes on their boss\'s desk', () => {
   assert.equal(m.machines, 2); assert.equal(m.queued, 1);
   assert.deepEqual(m.devServers.map((d) => [d.label, d.owner.sid]), [['#17 ubuntu', 'runner-captain-queenie'], ['#21 macos', 'runner-spider-man']]);
 });
+
+test('chi phí thật 24 giờ theo bot', () => {
+  const feed = { bots: [{ name: 'Iron Man', state: 'idle', jobs: [] }, { name: 'Spider Man', state: 'idle', jobs: [] }],
+    costs: { bots: { 'Iron Man': { cost24: 3.25 } } } };
+  const [iron, spider] = feedSessions(feed);
+  assert.equal(iron.cost, 3.25);
+  assert.equal(spider.cost, 0);
+});

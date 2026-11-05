@@ -63,7 +63,7 @@ function buildPlaque(since) {
     g.fillStyle = '#4A3410'; g.textAlign = 'center';
     g.font = '700 30px "Be Vietnam Pro", system-ui, sans-serif'; g.fillText(tr('life.trophy.plaque'), w / 2, 92);
     g.font = '800 64px "Be Vietnam Pro", system-ui, sans-serif'; g.fillText(date, w / 2, 178);
-    g.font = '600 26px "Be Vietnam Pro", system-ui, sans-serif'; g.fillText('My Office', w / 2, 236);
+    g.font = '600 26px "Be Vietnam Pro", system-ui, sans-serif'; g.fillText('CutCut', w / 2, 236);
   });
   plaqueMesh = new THREE.Group(); plaqueMesh.position.set(-7.95, 1.62, -4.1); plaqueMesh.rotation.y = Math.PI / 2; scene.add(plaqueMesh);
   put(plaqueMesh, rbox(0.62, 0.42, 0.035, mat('#5A3B26', { roughness: 0.45 }), 0.012), 0, 0, 0.018);

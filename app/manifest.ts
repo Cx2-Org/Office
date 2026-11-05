@@ -5,7 +5,7 @@ import type { MetadataRoute } from 'next';
 export const dynamic = 'force-static';
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: 'My Office', short_name: 'My Office', id: '/', start_url: '/', scope: '/', display: 'standalone', orientation: 'any',
+    name: 'CutCut', short_name: 'CutCut', id: '/', start_url: '/', scope: '/', display: 'standalone', orientation: 'any',
     background_color: '#0E131B', theme_color: '#0E131B',
     icons: [
       { src: '/icon-512.png', sizes: '512x512', type: 'image/png', purpose: 'any' },

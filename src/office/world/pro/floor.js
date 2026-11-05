@@ -199,7 +199,7 @@ function buildProFloor() {
   { const logo = canvasTex(1024, 220, (g, w, h) => {
       g.fillStyle = '#1C2620'; g.fillRect(0, 0, w, h);
       g.save(); g.translate(150, h / 2); g.scale(6.2, 6.2); g.translate(-12, -12); g.fillStyle = '#E8865F'; g.fill(new Path2D(OFFICE_MARK), 'evenodd'); g.restore();
-      g.fillStyle = '#F6EFE4'; g.font = '800 92px "Be Vietnam Pro", system-ui, sans-serif'; g.textBaseline = 'middle'; g.fillText('My Office', 260, h / 2 + 4);
+      g.fillStyle = '#F6EFE4'; g.font = '800 92px "Be Vietnam Pro", system-ui, sans-serif'; g.textBaseline = 'middle'; g.fillText('CutCut', 260, h / 2 + 4);
     });
     const lm = new THREE.MeshBasicMaterial({ map: logo }); PRO_FX.logoM = lm;
     put(scene, rbox(0.06, 0.62, 2.7, '#1C2620', 0.02), -7.96, 3.6, DZ);
@@ -327,7 +327,7 @@ function buildProFloor() {
       g.fillStyle = '#F6EFE4'; g.fillRect(0, 0, w, h); g.fillStyle = '#D97757'; g.fillRect(0, 0, w, 10);
       g.fillStyle = '#1E232B'; g.font = '800 30px "Be Vietnam Pro", system-ui, sans-serif'; g.textAlign = 'center';
       ['SHIP', 'SMALL,', 'SHIP', 'OFTEN'].forEach((t, i) => g.fillText(t, w / 2, 90 + i * 52));
-      g.fillStyle = '#7A8494'; g.font = '600 15px "Be Vietnam Pro", system-ui, sans-serif'; g.fillText('My Office', w / 2, h - 22);
+      g.fillStyle = '#7A8494'; g.font = '600 15px "Be Vietnam Pro", system-ui, sans-serif'; g.fillText('CutCut', w / 2, h - 22);
     });
     poster(9.6, 2.98, -7.96, 0, 0.8, 0.58, (g, w, h) => {
       const sky = g.createLinearGradient(0, 0, 0, h); sky.addColorStop(0, '#9CC9E8'); sky.addColorStop(1, '#F3E3C2'); g.fillStyle = sky; g.fillRect(0, 0, w, h);

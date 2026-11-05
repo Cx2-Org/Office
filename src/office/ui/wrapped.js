@@ -36,7 +36,7 @@ function draw(d, shot) {
   for (const [x, y, r, col] of [[930, 120, 380, 'rgba(217, 119, 87, .22)'], [120, 980, 420, 'rgba(140, 79, 168, .22)']]) { const gl = g.createRadialGradient(x, y, 0, x, y, r); gl.addColorStop(0, col); gl.addColorStop(1, 'rgba(0,0,0,0)'); g.fillStyle = gl; g.fillRect(0, 0, W, H); }
   // header: the mark, the name, the week
   g.save(); g.translate(60, 52); g.scale(2.6, 2.6); g.fillStyle = '#E8865F'; g.fill(new Path2D(OFFICE_MARK), 'evenodd'); g.restore();
-  g.fillStyle = '#F6EFE4'; g.font = `800 34px ${F}`; g.textBaseline = 'middle'; g.fillText('My Office', 136, 84);
+  g.fillStyle = '#F6EFE4'; g.font = `800 34px ${F}`; g.textBaseline = 'middle'; g.fillText('CutCut', 136, 84);
   g.fillStyle = '#A9B1C4'; g.font = `600 28px ${F}`; g.textAlign = 'right'; g.fillText(d.from === d.to ? ddmm(d.to) : `${ddmm(d.from)} – ${ddmm(d.to)}`, W - 60, 84); g.textAlign = 'left';
   g.fillStyle = '#FFFFFF'; g.font = `800 64px ${F}`; g.fillText(tr('wrapped.title'), 60, 178);
   // the office picture, cropped to fill its frame

@@ -52,12 +52,13 @@ function apply(feed) {
     let s = live.get(f.id);
     if (!s) {
       s = { id: f.id, pid: 0, name: f.name, dir: f.dir, link: null, desk: -1, status: f.status, lastPrompt: f.lastPrompt, taskStart: f.status === 'rest' ? 0 : Date.now(),
+        usage: { cost: f.cost, ctx: 0, ctxMax: 200000, model: f.jobs[0]?.model || '', out: 0 },
         counts: { read: 0, edit: 0, cmd: 0, web: 0 }, subs: f.subs.map((x) => ({ ...x, last: null, steps: 0 })), doneSubs: [], todos: [], last: null, lastAt: Date.now(), jobs: f.jobs, stuck: f.stuck };
       live.set(s.id, s); upsertSession(s, !first); tick(s);
       continue;
     }
     const was = s.status, had = new Map(s.subs.map((x) => [x.id, x]));
-    Object.assign(s, { status: f.status, stuck: f.stuck, lastPrompt: f.lastPrompt, jobs: f.jobs });
+    Object.assign(s, { status: f.status, stuck: f.stuck, lastPrompt: f.lastPrompt, jobs: f.jobs, usage: { ...(s.usage || {}), cost: f.cost } });
     s.subs = f.subs.map((x) => Object.assign(had.get(x.id) || { last: null, steps: 0 }, x));
     const ids = new Set(s.subs.map((x) => x.id));
     for (const [id, x] of had) if (!ids.has(id)) emit(s, 'substop', x.type, { agent: id });

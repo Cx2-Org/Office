@@ -68,7 +68,7 @@ export function paintNames(g, W, H, s) {
   }
 }
 export function paintMark(g, W, H, s) {
-  const text = 'My Office', pad = 16 * s;
+  const text = 'CutCut', pad = 16 * s;
   g.font = `700 ${13 * s}px "Be Vietnam Pro", system-ui, sans-serif`;
   const w = g.measureText(text).width + 40 * s, h = 30 * s, x = W - w - pad, y = H - h - pad;
   g.beginPath(); g.roundRect(x, y, w, h, h / 2); g.fillStyle = 'rgba(14, 19, 27, .72)'; g.fill();

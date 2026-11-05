@@ -1,5 +1,5 @@
 export default {
-  director: 'Giám đốc',
+  director: 'Giám đốc Percy',
   subagent: 'trợ lý',
   team: '{n} trợ lý',
   needsApproval: 'Chờ duyệt',

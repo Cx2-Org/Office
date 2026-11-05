@@ -1,7 +1,7 @@
 // What the characters say and are called (people/*.js): subagents arriving and reporting, the director handing out work,
 // lunch and coffee, and the sleepy lines when you click someone who is resting. Speech bubbles: keep them short.
 export default {
-  director: 'Director',
+  director: 'Director Percy',
   subagent: 'subagent',
   // the small badge on a boss's name tag
   team: { one: '{n} subagent', other: '{n} subagents' },

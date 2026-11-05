@@ -44,7 +44,7 @@ export default {
   sessions: '{n} phiên',
   subsRunning: '{n} trợ lý đang chạy',
   noSessions: 'Chưa có phiên nào',
-  docTitle: '({n}) Đến lượt bạn · My Office',
+  docTitle: '({n}) Đến lượt bạn · CutCut',
   live: {
     on: 'đang nhận dữ liệu',
     off: 'mất kết nối, đang thử lại…',

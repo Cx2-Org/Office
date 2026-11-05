@@ -25,6 +25,8 @@ export function feedSessions(feed) {
     const status = b.state === 'stuck' ? 'wait' : jobs.length ? 'work' : 'rest';
     return {
       id: botId(b.name), name: b.name, dir: `~/runner/${b.name}`, role: b.role || '', status,
+      // Chi phí thật 24 giờ của bot (giá API quy đổi), runner tính từ dòng "CHI PHÍ" của từng lượt làm.
+      cost: Number(feed?.costs?.bots?.[b.name]?.cost24) || 0,
       stuck: b.state === 'stuck' && jobs[0] ? { kind: 'repeat', label: jobTag(jobs[0]) } : null,
       lastPrompt: jobs[0] ? [jobTag(jobs[0]), jobs[0].phase?.text].filter(Boolean).join(' · ') : '',
       jobs,
